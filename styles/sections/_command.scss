@@ -1,0 +1,198 @@
+@import "../colors";
+
+#section-command {
+  .command-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 32px;
+
+    .carousel-arrow {
+      background: rgba(23, 32, 38, 0.7);
+      border: none;
+      color: $white;
+      font-size: 28px;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 2px 12px 0 rgba(41, 163, 106, 0.1);
+
+      &:hover {
+        background: linear-gradient(
+          90deg,
+          $green-gradient-1 0%,
+          $green-gradient-2 100%
+        );
+        color: $white;
+      }
+    }
+
+    .command-cards {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex: 1 1 auto;
+    }
+  }
+
+  .command-card {
+    background: lighten($black, 3%);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(41, 163, 106, 0.1);
+    width: 340px;
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+
+    &:hover {
+      box-shadow: 0 12px 36px 0 rgba(41, 163, 106, 0.18);
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(180deg, #e6e6e6 60%, #d2d2d2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-bottom: 1px solid #e0e0e0;
+      // Можно заменить на img, если появится фото
+    }
+
+    .stars {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px 0 20px;
+      .star {
+        color: $green-gradient-1;
+        font-size: 18px;
+        margin-right: 2px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .name {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 18px 20px 0 20px;
+      color: $white;
+      text-align: left;
+    }
+
+    .role-experience {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 10px 20px 0 20px;
+
+      .role {
+        background: linear-gradient(
+          90deg,
+          $green-gradient-1 0%,
+          $green-gradient-2 100%
+        );
+        color: $white;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: 12px;
+        padding: 3px 12px;
+        display: inline-block;
+      }
+      .exp {
+        color: $gray;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+
+    .bio {
+      color: $white;
+      font-size: 15px;
+      margin: 14px 20px 0 20px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .skills {
+      margin: 18px 0 0 20px;
+      padding: 0;
+      list-style: none;
+      li {
+        color: $green-gradient-1;
+        font-size: 15px;
+        margin-bottom: 6px;
+        position: relative;
+        padding-left: 18px;
+
+        &::before {
+          content: "";
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: linear-gradient(
+            90deg,
+            $green-gradient-1 0%,
+            $green-gradient-2 100%
+          );
+          position: absolute;
+          left: 0;
+          top: 6px;
+        }
+      }
+    }
+  }
+
+  // Адаптивность
+  @media (max-width: 1200px) {
+    .command-carousel .command-cards {
+      gap: 18px;
+    }
+    .command-card {
+      width: 280px;
+      min-height: 480px;
+    }
+  }
+  @media (max-width: 900px) {
+    .command-carousel {
+      flex-direction: column;
+      .command-cards {
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+      }
+    }
+    .command-card {
+      width: 90vw;
+      min-width: unset;
+      max-width: 400px;
+      margin-bottom: 18px;
+    }
+  }
+  @media (max-width: 600px) {
+    padding: 40px 0 30px 0;
+    .section-title {
+      font-size: 32px;
+    }
+    .section-description {
+      font-size: 16px;
+    }
+    .command-card {
+      width: 98vw;
+      min-width: unset;
+      padding: 0;
+    }
+  }
+}

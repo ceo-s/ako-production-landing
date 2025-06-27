@@ -1,0 +1,130 @@
+@use "../colors";
+
+#section-showcases {
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+
+    .section-title {
+      font-size: 3em;
+      font-weight: 700;
+      text-align: center;
+
+      span {
+        background-image: linear-gradient(
+          90deg,
+          colors.$green-gradient-1,
+          colors.$green-gradient-2
+        );
+        background-clip: text;
+        color: transparent;
+      }
+    }
+
+    .section-description {
+      text-align: center;
+      color: colors.$gray;
+      max-width: 800px;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2em;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .showcase-card {
+      background: colors.$white;
+      border-radius: 0.75em;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      height: 200px;
+      box-shadow: 0 0.75em 1.5em #00000033;
+
+      .overlay {
+        background: linear-gradient(to top, colors.$black, transparent 60%);
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+      }
+
+      .play-button {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 2.5em;
+        height: 2.5em;
+        border-radius: 50%;
+        background: colors.$white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: colors.$black;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+
+      .tag {
+        position: absolute;
+        top: 0.75em;
+        left: 0.75em;
+        z-index: 2;
+        padding: 0.2em 0.6em;
+        border-radius: 0.4em;
+        font-size: 0.75em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: colors.$white;
+
+        &.product {
+          background: colors.$green-light;
+        }
+        &.fashion {
+          background: #e91e63;
+        } // можно заменить, если появится брендовый розовый
+        &.commercial {
+          background: #e53935;
+        }
+        &.corporate {
+          background: #4caf50;
+        }
+        &.event {
+          background: #ff9800;
+        }
+      }
+
+      .card-content {
+        position: relative;
+        z-index: 2;
+        padding: 1em;
+        color: colors.$white;
+
+        .title {
+          font-weight: 600;
+          font-size: 1em;
+        }
+
+        .subtitle {
+          font-size: 0.9em;
+          color: colors.$gray;
+        }
+      }
+    }
+
+    .portfolio-description {
+      margin-top: 1em;
+      font-size: 0.9em;
+      color: colors.$gray;
+      text-align: center;
+    }
+  }
+}

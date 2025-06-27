@@ -1,0 +1,146 @@
+@use "colors";
+@use "sections/intro";
+@use "sections/services";
+@use "sections/showcases";
+@use "sections/pipeline";
+@use "sections/command";
+@use "sections/form";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: colors.$black;
+  color: colors.$white;
+
+  .scroller {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+      // display: none;
+    }
+  }
+}
+
+footer {
+  background: black;
+}
+
+section {
+  scroll-snap-align: start;
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .section-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: colors.$white;
+  }
+
+  .section-description {
+    color: colors.$gray;
+    font-size: 20px;
+    margin-bottom: 56px;
+    max-width: 700px;
+    line-height: 1.5;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .section-marker {
+    border-radius: 1.2em;
+    line-height: 2.4em;
+    height: 2.4em;
+    width: fit-content;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    font-size: medium;
+    color: rgba(colors.$white, 0.8);
+  }
+
+  .more-button {
+    margin-top: 2em;
+    padding: 0.8em 2em;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 9999px;
+    background: linear-gradient(
+      90deg,
+      colors.$green-gradient-1,
+      colors.$green-gradient-2
+    );
+    color: colors.$white;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+  }
+}
+
+.gradient-text {
+  background-image: linear-gradient(
+    90deg,
+    colors.$green-gradient-1,
+    colors.$green-gradient-2
+  );
+  color: transparent;
+  background-clip: text;
+}
+
+.gradient-container {
+  background-image: linear-gradient(
+    90deg,
+    rgba(colors.$green-dark, 0.7),
+    rgba(colors.$green-light, 0.7)
+  );
+}
+
+.header {
+  text-align: center;
+}
+
+section.dark {
+  background: linear-gradient(
+    110deg,
+    colors.$black 80%,
+    colors.$green-dark 100%
+  );
+  transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+section.light {
+  background: linear-gradient(
+    70deg,
+    colors.$black 80%,
+    colors.$green-dark 100%
+  );
+  transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
