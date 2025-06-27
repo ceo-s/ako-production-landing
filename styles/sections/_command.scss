@@ -3,10 +3,10 @@
 #section-command {
   .command-carousel {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 18px;
-    margin-top: 32px;
 
     .carousel-arrow {
       background: rgba(23, 32, 38, 0.7);
@@ -38,6 +38,9 @@
       gap: 32px;
       justify-content: center;
       flex: 1 1 auto;
+      max-width: 1100px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
     }
   }
 
@@ -46,6 +49,7 @@
     border-radius: 12px;
     box-shadow: 0 8px 32px 0 rgba(41, 163, 106, 0.1);
     width: 340px;
+    min-width: 340px;
     min-height: 520px;
     display: flex;
     flex-direction: column;

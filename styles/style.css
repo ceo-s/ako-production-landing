@@ -189,6 +189,7 @@
 #section-services > div > ul.services-grid {
   position: relative;
   width: 90%;
+  height: 50vh;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -203,10 +204,9 @@
 .service-card {
   background: rgb(20.65, 20.65, 20.65);
   border-radius: 18px;
-  box-shadow: 0 8px 32px 0 rgba(41, 163, 106, 0.1);
   width: 90%;
   height: 80%;
-  padding: 32px 28px 28px 28px;
+  padding: 32px 28px 0px 28px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -214,6 +214,11 @@
 }
 .service-card:hover {
   box-shadow: 0 12px 36px 0 rgba(41, 163, 106, 0.18);
+}
+.service-card .service-card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .service-card .icon.gradient-container {
   background: linear-gradient(135deg, #2dcf8c 0%, #157f5d 100%);
@@ -236,6 +241,7 @@
   margin-bottom: 12px;
   margin-top: 0;
   text-align: left;
+  margin-left: 1em;
 }
 .service-card .description {
   font-size: 16px;
@@ -287,7 +293,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5em;
 }
 #section-showcases > div .section-title {
   font-size: 3em;
@@ -489,55 +494,6 @@
 #section-pipeline .pipeline-steps .step:last-child::after {
   display: none;
 }
-#section-pipeline .cta-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  margin-bottom: 18px;
-}
-#section-pipeline .cta-buttons .primary-btn {
-  background: linear-gradient(90deg, #2dcf8c 0%, #157f5d 100%);
-  color: #f9f9f9;
-  font-weight: 600;
-  font-size: 17px;
-  border: none;
-  border-radius: 10px;
-  padding: 14px 32px;
-  cursor: pointer;
-  box-shadow: 0 2px 12px 0 rgba(41, 163, 106, 0.15);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: background 0.2s;
-}
-#section-pipeline .cta-buttons .primary-btn .icon {
-  font-size: 18px;
-}
-#section-pipeline .cta-buttons .primary-btn:hover {
-  background: linear-gradient(90deg, #157f5d 0%, #2dcf8c 100%);
-}
-#section-pipeline .cta-buttons .secondary-btn {
-  background: transparent;
-  color: #f9f9f9;
-  font-weight: 600;
-  font-size: 17px;
-  border: 2px solid #2dcf8c;
-  border-radius: 10px;
-  padding: 14px 32px;
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
-}
-#section-pipeline .cta-buttons .secondary-btn:hover {
-  background: #2dcf8c;
-  color: #0d0d0d;
-  border-color: #157f5d;
-}
-#section-pipeline .cta-note {
-  color: #a0a0a0;
-  font-size: 16px;
-  margin-top: 0;
-  margin-bottom: 0;
-}
 @media (max-width: 1200px) {
   #section-pipeline .pipeline-steps .step {
     width: 180px;
@@ -583,10 +539,10 @@
 
 #section-command .command-carousel {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 18px;
-  margin-top: 32px;
 }
 #section-command .command-carousel .carousel-arrow {
   background: rgba(23, 32, 38, 0.7);
@@ -612,12 +568,16 @@
   gap: 32px;
   justify-content: center;
   flex: 1 1 auto;
+  max-width: 1100px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
 }
 #section-command .command-card {
   background: rgb(20.65, 20.65, 20.65);
   border-radius: 12px;
   box-shadow: 0 8px 32px 0 rgba(41, 163, 106, 0.1);
   width: 340px;
+  min-width: 340px;
   min-height: 520px;
   display: flex;
   flex-direction: column;
@@ -1004,11 +964,13 @@ body .scroller {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
+
 footer {
   background: black;
 }
 
 section {
+  position: relative;
   scroll-snap-align: start;
   height: 100vh;
   width: 100%;
@@ -1046,27 +1008,34 @@ section .section-marker {
   font-size: medium;
   color: rgba(249, 249, 249, 0.8);
 }
+section .fictive-block {
+  height: 6em;
+}
+section .more-container {
+  position: absolute;
+  justify-self: end;
+  bottom: 3em;
+}
 section .more-button {
-  margin-top: 2em;
-  padding: 0.8em 2em;
-  font-size: 1em;
-  font-weight: 600;
-  border-radius: 9999px;
-  background: linear-gradient(90deg, #2dcf8c, #157f5d);
+  background: transparent;
   color: #f9f9f9;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
+  font-weight: 600;
+  font-size: 17px;
+  border: 2px solid #2dcf8c;
+  border-radius: 10px;
+  padding: 1em 2em;
   cursor: pointer;
-  border: none;
-  transition: transform 0.2s ease;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 section .more-button:hover {
-  transform: translateY(-2px);
+  background: #157f5d;
+  color: #0d0d0d;
+  border-color: #157f5d;
 }
-section .more-button svg {
-  width: 1em;
-  height: 1em;
+section .subnote {
+  color: #a0a0a0;
+  font-size: 16px;
+  margin-top: 1em;
 }
 
 .gradient-text {
