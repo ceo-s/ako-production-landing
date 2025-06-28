@@ -543,6 +543,7 @@
   align-items: center;
   justify-content: center;
   gap: 18px;
+  width: 80%;
 }
 #section-command .command-carousel .carousel-arrow {
   background: rgba(23, 32, 38, 0.7);
@@ -563,16 +564,19 @@
   background: linear-gradient(90deg, #2dcf8c 0%, #157f5d 100%);
   color: #f9f9f9;
 }
-#section-command .command-carousel .command-cards {
-  display: flex;
-  gap: 32px;
-  justify-content: center;
-  flex: 1 1 auto;
-  max-width: 1100px;
+#section-command .command-cards {
+  width: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 35%;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
 }
+#section-command .command-cards::-webkit-scrollbar {
+  display: none;
+}
 #section-command .command-card {
+  scroll-snap-align: center;
   background: rgb(20.65, 20.65, 20.65);
   border-radius: 12px;
   box-shadow: 0 8px 32px 0 rgba(41, 163, 106, 0.1);
@@ -584,6 +588,7 @@
   align-items: flex-start;
   overflow: hidden;
   transition: box-shadow 0.2s;
+  margin-bottom: 1em;
 }
 #section-command .command-card:hover {
   box-shadow: 0 12px 36px 0 rgba(41, 163, 106, 0.18);

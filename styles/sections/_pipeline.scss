@@ -1,4 +1,4 @@
-@import "../colors";
+@use "../colors";
 
 #section-pipeline {
   display: flex;
@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: $white;
+  color: colors.$white;
 
   .pipeline-steps {
     display: flex;
@@ -20,7 +20,7 @@
     z-index: 1;
 
     .step {
-      background: lighten($black, 3%);
+      background: lighten(colors.$black, 3%);
       border-radius: 18px;
       box-shadow: 0 8px 32px 0 rgba(41, 163, 106, 0.1);
       padding: 36px 28px 32px 28px;
@@ -40,8 +40,8 @@
       .icon-wrapper {
         background: linear-gradient(
           135deg,
-          $green-gradient-1 0%,
-          $green-gradient-2 100%
+          colors.$green-gradient-1 0%,
+          colors.$green-gradient-2 100%
         );
         border-radius: 16px;
         width: 56px;
@@ -53,13 +53,13 @@
 
         .icon {
           font-size: 28px;
-          color: $white;
+          color: colors.$white;
         }
       }
 
       .step-number {
-        background: $green-dark;
-        color: $white;
+        background: colors.$green-dark;
+        color: colors.$white;
         font-weight: 600;
         border-radius: 50%;
         width: 28px;
@@ -77,11 +77,11 @@
         font-size: 20px;
         font-weight: 700;
         margin-bottom: 10px;
-        color: $white;
+        color: colors.$white;
       }
 
       .step-description {
-        color: $gray;
+        color: colors.$gray;
         font-size: 15px;
         line-height: 1.5;
         margin-bottom: 0;
