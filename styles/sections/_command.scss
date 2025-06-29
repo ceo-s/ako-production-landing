@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../colors";
 
 #section-command {
@@ -59,7 +60,7 @@
 
   .embla__slide {
     scroll-snap-align: center;
-    background: lighten(colors.$black, 3%);
+    background: color.scale(colors.$black, $lightness: 3%);
     border-radius: 12px;
     box-shadow: 0 8px 32px 0 rgba(41, 163, 106, 0.1);
     width: 340px;
@@ -88,7 +89,6 @@
       justify-content: center;
       position: relative;
       border-bottom: 1px solid #e0e0e0;
-      // Можно заменить на img, если появится фото
     }
 
     .stars {
@@ -177,7 +177,6 @@
     }
   }
 
-  // Адаптивность
   @media (max-width: 1200px) {
     .command-carousel .command-cards {
       gap: 18px;

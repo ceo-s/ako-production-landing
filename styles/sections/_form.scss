@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../colors";
 
 #section-form {
@@ -14,7 +15,6 @@
 
   .contact-info {
     flex: 1 1 340px;
-    // min-width: 320px;
     max-width: 400px;
 
     h3 {
@@ -111,7 +111,7 @@
 
   .quote-form {
     flex: 1 1 300px;
-    background: lighten(colors.$black, 4%);
+    background: color.scale(colors.$black, $lightness: 4%);
     border-radius: 14px;
     box-shadow: 0 8px 32px 0 rgba(41, 163, 106, 0.1);
     padding: 0 36px 32px 36px;
@@ -237,7 +237,6 @@
     }
   }
 
-  // Адаптивность
   @media (max-width: 1100px) {
     .form-container {
       flex-direction: column;

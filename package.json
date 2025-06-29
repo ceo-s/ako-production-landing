@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "watch:scss": "sass -w styles/style.scss styles/style.css"
+    "watch:scss": "sass -w styles/style.scss styles/style.css",
+    "dev": "npx vite",
+    "build": "npx vite build"
   },
   "dependencies": {
     "@tabler/icons": "^3.34.0",

@@ -2,7 +2,6 @@ import parsePhoneNumber from "libphonenumber-js";
 
 const inputPhone = document.querySelector("input#phone");
 
-// Formatting phone while writing input
 inputPhone.addEventListener("input", (e) => {
   let number = parsePhoneNumber(e.target.value);
   if (number) {
