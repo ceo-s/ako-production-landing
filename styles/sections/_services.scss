@@ -124,9 +124,31 @@
   #section-services {
     > div {
       > ul.services-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 1fr);
         height: fit-content;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .service-card {
+          transition: height 0.35s ease-in-out, box-shadow 2s ease;
+          width: 75%;
+          .description {
+            transition: height 0.35s ease-in-out;
+          }
+        }
+        .closed {
+          .description {
+            height: 0;
+            overflow: hidden;
+          }
+        }
+        .opened {
+          height: fit-content;
+          .description {
+            height: 5em;
+          }
+        }
       }
     }
     .fictive-block {
