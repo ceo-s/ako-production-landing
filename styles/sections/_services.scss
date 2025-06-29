@@ -121,8 +121,16 @@
   }
 }
 @media (max-width: 800px) {
-  #section-services > div > ul.services-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 1fr);
+  #section-services {
+    > div {
+      > ul.services-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        height: fit-content;
+      }
+    }
+    .fictive-block {
+      height: 200px;
+    }
   }
 }
