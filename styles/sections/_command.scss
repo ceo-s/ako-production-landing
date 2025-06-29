@@ -12,7 +12,7 @@
     overflow: hidden;
 
     .carousel-arrow {
-      background: rgba(23, 32, 38, 0.7);
+      background-color: rgba(23, 32, 38, 0.7);
       border: none;
       color: colors.$white;
       font-size: 28px;
@@ -23,17 +23,18 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 1s linear;
       box-shadow: 0 2px 12px 0 rgba(41, 163, 106, 0.1);
       position: absolute;
-
-      &:hover {
-        background: linear-gradient(
-          90deg,
-          colors.$green-gradient-1 0%,
-          colors.$green-gradient-2 100%
-        );
-        color: colors.$white;
+      @media (hover: hover) {
+        &:hover {
+          background: linear-gradient(
+            90deg,
+            colors.$green-gradient-1 0%,
+            colors.$green-gradient-2 100%
+          );
+          color: colors.$white;
+        }
       }
     }
     .left {
@@ -181,7 +182,7 @@
     .command-carousel .command-cards {
       gap: 18px;
     }
-    .command-card {
+    .embla__slide {
       width: 280px;
       min-height: 480px;
     }
@@ -195,25 +196,39 @@
         align-items: center;
       }
     }
-    .command-card {
+    .embla__slide {
       width: 90vw;
       min-width: unset;
       max-width: 400px;
       margin-bottom: 18px;
     }
   }
-  @media (max-width: 600px) {
-    padding: 40px 0 30px 0;
-    .section-title {
-      font-size: 32px;
+
+  @media (max-width: 700px) {
+    .carousel-arrow {
+      bottom: 0;
+      &:active {
+        background: linear-gradient(
+          90deg,
+          colors.$green-gradient-1 0%,
+          colors.$green-gradient-2 100%
+        );
+        color: colors.$white;
+      }
     }
-    .section-description {
-      font-size: 16px;
+
+    .fictive-block {
+      height: 180px;
     }
-    .command-card {
-      width: 98vw;
-      min-width: unset;
-      padding: 0;
+    .embla__viewport {
+      .section-description {
+        text-align: center;
+      }
+      .embla__slide {
+        min-width: 90vw;
+        padding: 0;
+        margin-bottom: 5em;
+      }
     }
   }
 }
