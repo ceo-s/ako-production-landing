@@ -14,7 +14,7 @@
 
   .contact-info {
     flex: 1 1 340px;
-    min-width: 320px;
+    // min-width: 320px;
     max-width: 400px;
 
     h3 {
@@ -111,7 +111,6 @@
 
   .quote-form {
     flex: 1 1 300px;
-    // width: 100%;
     background: lighten(colors.$black, 4%);
     border-radius: 14px;
     box-shadow: 0 8px 32px 0 rgba(41, 163, 106, 0.1);
@@ -175,7 +174,7 @@
         background: #23272f;
         border: none;
         border-radius: 8px;
-        padding: 13px 16px;
+        padding: 13px 0 13px 13px;
         color: colors.$white;
         font-size: 15px;
         margin-bottom: 0;
@@ -242,9 +241,11 @@
   @media (max-width: 1100px) {
     .form-container {
       flex-direction: column;
-      align-items: stretch;
+      align-items: center;
+      justify-content: center;
       gap: 32px;
     }
+
     .contact-info,
     .quote-form {
       max-width: 100%;
@@ -254,27 +255,28 @@
     }
   }
   @media (max-width: 700px) {
-    padding: 40px 0 30px 0;
     .form-container {
       padding: 0 6px;
     }
     .contact-info {
-      padding: 0 2px;
+      width: 90%;
+      max-height: fit-content;
       h3 {
         font-size: 20px;
       }
       .why-choose {
-        padding: 18px 10px 14px 10px;
-        .stats {
-          gap: 14px;
-        }
+        display: none;
       }
     }
     .quote-form {
-      padding: 0 8px 18px 8px;
+      margin: 0 1em 1.2em 1em;
+      input {
+        margin-right: 1em;
+      }
+      // padding: 0 8px 18px 8px;
       .form-header {
-        padding: 18px 10px 12px 10px;
-        margin: -8px -8px 18px -8px;
+        // padding: 18px 10px 12px 10px;
+        // margin: -8px -8px 18px -8px;
       }
     }
     .form-row {

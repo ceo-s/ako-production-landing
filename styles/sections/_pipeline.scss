@@ -111,7 +111,7 @@
   }
 
   // Адаптивность
-  @media (max-width: 1200px) {
+  @media (max-width: 1550px) {
     .section-description {
       margin-bottom: 20px;
     }
@@ -120,7 +120,7 @@
       width: 100%;
       align-items: center;
       justify-content: start;
-
+      scrollbar-width: none;
       padding-left: 1em;
       padding-right: 1em;
 
