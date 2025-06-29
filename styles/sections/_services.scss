@@ -122,9 +122,6 @@
 }
 @media (max-width: 800px) {
   #section-services {
-    .section-marker {
-      // margin-top: 100px;
-    }
     > div {
       > ul.services-grid {
         height: fit-content;
@@ -134,22 +131,25 @@
         align-items: center;
 
         .service-card {
-          transition: height 0.35s ease-in-out, box-shadow 2s ease;
+          overflow: hidden;
+          transition: height 0.2s ease-out, box-shadow 2s ease;
           width: 75%;
           .description {
-            transition: height 0.35s ease-in-out;
+            transition: height 0.2s ease-out, opacity 0.35s linear;
           }
         }
         .closed {
           .description {
             height: 0;
             overflow: hidden;
+            opacity: 0;
           }
         }
         .opened {
           height: fit-content;
           .description {
             height: 5em;
+            opacity: 1;
           }
         }
       }

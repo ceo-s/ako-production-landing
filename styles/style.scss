@@ -121,9 +121,10 @@ section {
 .gradient-container {
   background-image: linear-gradient(
     90deg,
-    rgba(colors.$green-dark, 0.7),
+    rgba(colors.$green-dark, 0.5),
     rgba(colors.$green-light, 0.7)
   );
+  box-shadow: 0 0 10px 0.2px colors.$green-dark;
 }
 
 .header {
@@ -154,6 +155,7 @@ section.light {
   body {
     .section-marker {
       margin-top: 1em;
+      margin-bottom: 0.5em;
     }
     .section-title {
       font-size: 38px;
