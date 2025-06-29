@@ -122,6 +122,9 @@
 }
 @media (max-width: 800px) {
   #section-services {
+    .section-marker {
+      // margin-top: 100px;
+    }
     > div {
       > ul.services-grid {
         height: fit-content;
