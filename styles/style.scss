@@ -159,8 +159,8 @@ section.light {
       height: fit-content;
     }
     .scroller {
-      height: auto;
-      overflow-y: auto;
+      height: 100vh;
+      overflow-y: scroll;
       scroll-snap-type: none;
     }
   }
