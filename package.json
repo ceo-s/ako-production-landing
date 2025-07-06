@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@tabler/icons": "^3.34.0",
+    "debounce": "^2.2.0",
     "embla-carousel": "^8.6.0",
     "embla-carousel-wheel-gestures": "^8.0.2",
     "libphonenumber-js": "^1.12.9",
