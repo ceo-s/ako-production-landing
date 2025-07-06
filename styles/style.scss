@@ -200,13 +200,8 @@ section.light {
 #social-networks-container {
   position: absolute;
   right: 15em;
-  top: 0em;
+  top: -35px; // Hidden because it will appear after js let it to
   transition: 500ms linear;
-
-  &.hidden {
-    opacity: 0;
-    top: -35px;
-  }
 
   div {
     width: fit-content;
