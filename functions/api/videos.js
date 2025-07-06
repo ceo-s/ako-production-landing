@@ -1,7 +1,7 @@
 export async function onRequest(context) {
   let res = {};
   let cursor = undefined;
-  const videos = undefined;
+  let videos = undefined;
 
   try {
     while (!videos || !videos.list_complete) {
