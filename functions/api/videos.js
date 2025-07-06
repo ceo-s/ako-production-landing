@@ -12,10 +12,20 @@ export async function onRequest(context) {
 
     return new Response(JSON.stringify(res), {
       status: 200,
+      headers: corsHeaders(),
     });
   } catch (err) {
     return new Response(JSON.stringify({ message: err.message }), {
       status: 500,
     });
   }
+}
+
+function corsHeaders() {
+  return {
+    "Access-Control-Allow-Origin": "*", // Для DEV
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Access-Control-Max-Age": "86400",
+  };
 }
