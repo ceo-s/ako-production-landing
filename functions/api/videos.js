@@ -1,7 +1,7 @@
 export async function onRequest(context) {
   try {
     const keys = await fetchKeys(context.env.AKO_VIDEOS_KV);
-    const videos = await fetchVideos(keys);
+    const videos = await fetchVideos(keys, context.env.AKO_VIDEOS_KV);
 
     return new Response(JSON.stringify(videos), {
       status: 200,
