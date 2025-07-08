@@ -32,7 +32,7 @@ async function fetchVideos(keys, store) {
   let reqs = [];
 
   for (let i = 0; i < keys.length; i += 100) {
-    reqs.push(store.get(keys.slice(i, i + 100), { type: "json" }));
+    reqs.push(store.get(keys.slice(i, i + 100)));
   }
 
   const resp = await Promise.allSettled(reqs);
