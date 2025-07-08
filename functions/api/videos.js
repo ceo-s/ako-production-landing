@@ -15,13 +15,13 @@ export async function onRequest(context) {
 }
 
 async function fetchKeys(store) {
-  let res = {};
+  let res = [];
   let cursor = undefined;
   let videos = undefined;
 
   while (!videos || !videos.list_complete) {
     videos = await store.list({ cursor });
-    res = { ...res, ...videos.keys };
+    res.push(...videos.keys);
     cursor = videos.cursor;
   }
 
