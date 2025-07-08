@@ -1,16 +1,9 @@
 export async function onRequest(context) {
-  let res = {};
-  let cursor = undefined;
-  let videos = undefined;
-
   try {
-    while (!videos || !videos.list_complete) {
-      videos = await context.env.AKO_VIDEOS_KV.list({ cursor });
-      res = { ...res, ...videos.keys };
-      cursor = videos.cursor;
-    }
+    const keys = fetchKeys();
+    const videos = fetchVideos(keys);
 
-    return new Response(JSON.stringify(res), {
+    return new Response(JSON.stringify(videos), {
       status: 200,
       headers: corsHeaders(),
     });
@@ -20,6 +13,22 @@ export async function onRequest(context) {
     });
   }
 }
+
+async function fetchKeys() {
+  let res = {};
+  let cursor = undefined;
+  let videos = undefined;
+
+  while (!videos || !videos.list_complete) {
+    videos = await context.env.AKO_VIDEOS_KV.list({ cursor });
+    res = { ...res, ...videos.keys };
+    cursor = videos.cursor;
+  }
+
+  return res;
+}
+
+async function fetchVideos(keys) {}
 
 function corsHeaders() {
   return {
