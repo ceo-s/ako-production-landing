@@ -1,7 +1,7 @@
 export async function onRequest(context) {
   try {
-    const keys = fetchKeys();
-    const videos = fetchVideos(keys);
+    const keys = await fetchKeys(context.env.AKO_VIDEOS_KV);
+    const videos = await fetchVideos(keys);
 
     return new Response(JSON.stringify(videos), {
       status: 200,
@@ -14,21 +14,41 @@ export async function onRequest(context) {
   }
 }
 
-async function fetchKeys() {
+async function fetchKeys(store) {
   let res = {};
   let cursor = undefined;
   let videos = undefined;
 
   while (!videos || !videos.list_complete) {
-    videos = await context.env.AKO_VIDEOS_KV.list({ cursor });
+    videos = await store.list({ cursor });
     res = { ...res, ...videos.keys };
     cursor = videos.cursor;
   }
 
-  return res;
+  return res.map((k) => k.name);
 }
 
-async function fetchVideos(keys) {}
+async function fetchVideos(keys, store) {
+  let reqs = [];
+
+  for (let i = 0; i < keys.length; i += 100) {
+    reqs.push(store.get(keys.slice(i, i + 100), { type: "json" }));
+  }
+
+  const resp = await Promise.allSettled(reqs);
+
+  let res = {};
+  for (const result of resp) {
+    if (result.status == "rejected") {
+      console.error("Couldn't fetch KV pairs. " + result.reason);
+      continue;
+    }
+
+    res = { ...res, ...Object.fromEntries(result.value) };
+  }
+
+  return res;
+}
 
 function corsHeaders() {
   return {
