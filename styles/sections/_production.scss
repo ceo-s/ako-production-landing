@@ -58,20 +58,99 @@
 
 #player-dialog {
   &::backdrop {
-    background-color: red;
+    background-color: colors.$black;
+    opacity: 0.7;
   }
   margin: auto;
-  width: 100%;
+
+  background: none;
+  border: none;
+
+  button {
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+  }
 
   > div {
-    max-height: 80%;
-    max-width: 90%;
+    position: relative;
     height: fit-content;
-    padding: 1em;
+    width: fit-content;
+    background: none;
 
     video {
-      max-height: inherit;
-      max-width: inherit;
+      max-width: 80vw;
+      max-height: 80vh;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    button {
+      background: colors.$gray;
+      opacity: 0.9;
+      transition: opacity 100ms ease;
+      border: solid colors.$white 2px;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    button.play-button {
+      position: absolute;
+      align-self: center;
+      justify-self: center;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+      padding: 6px;
+      scale: 1.2;
+
+      > img {
+        filter: invert(100%);
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    div.controls {
+      position: absolute;
+      bottom: 6px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // display: none;
+      button {
+        width: 34px;
+        height: 34px;
+        border-radius: 4px;
+        background: colors.$gray;
+        > img {
+          filter: invert(100%);
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      button.stop-button {
+      }
+
+      input.progress {
+        width: 100%;
+        height: 100%;
+        accent-color: colors.$gray;
+        margin-left: 4px;
+        margin-right: 4px;
+      }
+
+      button.full-view-button {
+      }
     }
   }
 }

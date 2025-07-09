@@ -1,3 +1,4 @@
 node_modules
 assets/icons-old
 dist
+wrangler.jsonc

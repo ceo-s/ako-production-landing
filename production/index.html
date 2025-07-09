@@ -9,8 +9,19 @@
   <body>
     <dialog id="player-dialog">
       <div>
-        <h4 class="video-name"></h4>
-        <video src="" controls="controls"></video>
+        <video src=""></video>
+        <button class="play-button">
+          <img src="/assets/icons/player-play.svg" />
+        </button>
+        <div class="controls">
+          <button class="stop-button">
+            <img src="/assets/icons/player-pause.svg" />
+          </button>
+          <input type="range" class="progress" value="0" step="0.01" />
+          <button class="full-view-button">
+            <img src="/assets/icons/border-corners.svg" />
+          </button>
+        </div>
       </div>
     </dialog>
     <section id="section-production-page" class="dark">
