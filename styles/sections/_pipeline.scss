@@ -35,9 +35,6 @@
       position: relative;
       margin: 0 18px;
 
-      &:nth-of-type(odd) {
-        scale: 1.05;
-      }
       &:hover {
         box-shadow: 0 12px 36px 0 rgba(41, 163, 106, 0.18);
       }

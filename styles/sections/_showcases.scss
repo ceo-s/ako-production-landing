@@ -137,26 +137,22 @@
   #section-showcases {
     > div {
       .showcase-grid {
-        display: grid;
+        display: flex;
+        flex-wrap: wrap;
         grid-template-columns: repeat(2, 1fr);
         gap: 0.8em;
         width: 90%;
       }
       .showcase-card {
-        width: 96%;
-        margin: 0 auto;
-        height: 100px;
-        border-radius: 0.35em;
-        box-shadow: 0 0.15em 0.3em #00000014;
+        width: 90vw;
+        height: auto;
+        // max-width: 96%;
       }
 
       .portfolio-description {
         font-size: 0.7em;
         margin-top: 0.4em;
       }
-    }
-    .fictive-block {
-      height: 200px;
     }
   }
 }

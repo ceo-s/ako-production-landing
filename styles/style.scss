@@ -291,6 +291,15 @@ section.light {
   background: colors.$green-dark;
 }
 
+@media (max-width: 700px) {
+  .pretty-scrollbar::-webkit-scrollbar,
+  .pretty-scrollbar::-webkit-scrollbar-track,
+  .pretty-scrollbar::-webkit-scrollbar-thumb,
+  .pretty-scrollbar::-webkit-scrollbar-thumb:hover {
+    display: none;
+  }
+}
+
 .scroll-to-top {
   position: fixed;
   top: 40px;

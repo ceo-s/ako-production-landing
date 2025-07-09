@@ -51,8 +51,11 @@
     </div>
     <div class="scroller pretty-scrollbar">
       <section id="section-intro">
-        <video autoplay muted loop plays-inline>
-          <source src="assets/videos/intro.mp4" />
+        <video class="vertical" autoplay muted loop plays-inline>
+          <source src="assets/videos/intro_vertical.mp4" />
+        </video>
+        <video class="horizontal" autoplay muted loop plays-inline>
+          <source src="assets/videos/intro_horizontal.mp4" />
         </video>
         <div>
           <div class="section-marker">
@@ -257,7 +260,7 @@
         <div>
           <div class="showcase-grid">
             <a href="/production/">
-              <div class="showcase-card">
+              <div id="hinted-showcase" class="showcase-card">
                 <span class="tag">Production</span>
                 <img
                   src="/assets/images/production.jpg"
@@ -654,4 +657,7 @@
   <script type="module" src="scripts/services.js"></script>
   <script type="module" src="scripts/carousel.js"></script>
   <script type="module" src="scripts/social-container.js"></script>
+  <script type="module" src="scripts/walkthrough.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
 </html>

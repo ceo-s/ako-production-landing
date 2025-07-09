@@ -4,34 +4,86 @@
   justify-content: center;
   align-items: center;
 
+  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow: hidden;
+  height: fit-content;
+
   > div {
-    position: relative;
+    // display: flex;
     padding-top: 4em;
-    height: auto;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   div.production-grid {
-    gap: 2em;
+    position: relative;
     margin-top: 4em;
-    width: 90%;
-    height: 90vh;
+    width: 100vw;
+    display: grid;
+    height: auto;
+    grid-template-columns: repeat(auto-fill, minmax(12.5vw, 1fr));
+    grid-auto-rows: 12.5vw;
+    grid-auto-flow: row dense;
+
+    &::before {
+      content: "-";
+      position: absolute;
+      width: 100vw;
+      height: 60px;
+      top: -30px;
+      background: red;
+
+      z-index: 1;
+      pointer-events: none;
+      backdrop-filter: blur(2px);
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(colors.$black, 0.65) 50%,
+        rgba(colors.$black, 1) 100%
+      );
+      z-index: 11111;
+    }
 
     div.showcase {
       position: relative;
-      max-height: 400px;
-      max-width: 400px;
       float: left;
-      margin: 1em;
+      overflow: hidden;
+
+      max-width: 25vw;
+      max-height: 25vw;
+
+      &.horizontal {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      &.vertical {
+        grid-column: span 1;
+        grid-row: span 2;
+      }
+
+      &.placeholder {
+        background: repeating-linear-gradient(
+          45deg,
+          #eee,
+          #eee 10px,
+          #ddd 10px,
+          #ddd 20px
+        );
+        opacity: 0.3;
+        transition: opacity 0.3s ease;
+      }
+
+      &.placeholder:hover {
+        opacity: 0.5;
+      }
 
       video {
         max-height: inherit;
         max-width: inherit;
         transition: filter 300ms ease;
         filter: brightness(70%) blur(2px);
+        object-fit: cover;
 
         &:hover {
           filter: brightness(100%) blur(0);
@@ -54,6 +106,24 @@
       cursor: pointer;
     }
   }
+  @media (max-width: 700px) {
+    div.production-grid {
+      margin-top: 4em;
+      width: 100vw;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(50vw, 1fr));
+      grid-auto-rows: 50vw;
+      grid-auto-flow: dense;
+      div.showcase {
+        max-width: 100vw;
+        max-height: 100vw;
+
+        &.placeholder {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 #player-dialog {
@@ -62,9 +132,32 @@
     opacity: 0.7;
   }
   margin: auto;
-
   background: none;
   border: none;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .close-dialog {
+      margin-top: 1em;
+      background: rgba(colors.$black, 0.75);
+      color: colors.$white;
+      font-weight: 600;
+      font-size: 17px;
+      border: 2px solid colors.$green-gradient-1;
+      border-radius: 10px;
+      padding: 1em 2em;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      &:hover {
+        background: colors.$green-gradient-2;
+        color: colors.$black;
+        border-color: colors.$green-gradient-2;
+      }
+    }
+  }
 
   button {
     border: none;
@@ -79,7 +172,7 @@
     background: none;
 
     video {
-      max-width: 80vw;
+      max-width: 90vw;
       max-height: 80vh;
       object-fit: cover;
       display: block;
@@ -87,7 +180,7 @@
     }
 
     button {
-      background: colors.$gray;
+      background: colors.$green-light;
       opacity: 0.9;
       transition: opacity 100ms ease;
       border: solid colors.$white 2px;
@@ -120,17 +213,17 @@
 
     div.controls {
       position: absolute;
-      bottom: 6px;
+      bottom: 4.7em;
       width: 100%;
       display: flex;
       justify-content: center;
-      align-items: center;
-      // display: none;
+      align-items: space-between;
+
       button {
         width: 34px;
         height: 34px;
         border-radius: 4px;
-        background: colors.$gray;
+        background: colors.$green-light;
         > img {
           filter: invert(100%);
           width: 100%;
@@ -142,11 +235,10 @@
       }
 
       input.progress {
-        width: 100%;
-        height: 100%;
-        accent-color: colors.$gray;
-        margin-left: 4px;
-        margin-right: 4px;
+        // width: 80%;
+        // height: 100%;
+        accent-color: colors.$green-light;
+        flex-grow: 1;
       }
 
       button.full-view-button {

@@ -33,6 +33,22 @@
     pointer-events: none;
   }
 
+  > video.vertical {
+    display: none;
+  }
+  > video.horizontal {
+    display: inline-block;
+  }
+
+  @media (max-width: 700px) {
+    > video.vertical {
+      display: inline-block;
+    }
+    > video.horizontal {
+      display: none;
+    }
+  }
+
   > div {
     position: relative;
     z-index: 1;

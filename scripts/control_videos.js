@@ -5,6 +5,7 @@ const controls = player.querySelector(".controls");
 const stopButton = player.querySelector(".stop-button");
 const progress = player.querySelector(".progress");
 const fullViewButton = player.querySelector(".full-view-button");
+const closeButton = player.querySelector(".close-dialog");
 
 player.addEventListener("click", (e) => {
   if (e.target.tagName === "DIALOG") {
@@ -12,6 +13,12 @@ player.addEventListener("click", (e) => {
     pauseVideo();
     player.close();
   }
+});
+
+closeButton.addEventListener("click", (e) => {
+  e.stopPropagation();
+  pauseVideo();
+  player.close();
 });
 
 function playVideo() {
@@ -75,7 +82,9 @@ stopButton.addEventListener("click", (e) => {
 video.addEventListener("timeupdate", () => {
   const value = (video.currentTime / video.duration) * 100;
   progress.value = value;
-  console.log("Vals");
+  if (value === 100) {
+    pauseVideo();
+  }
 });
 
 progress.addEventListener("input", () => {
