@@ -2,24 +2,35 @@
 
 #section-showcases-page {
   justify-content: flex-start;
-  padding-top: 4em;
 
-  ul.showcases-list {
-    margin-top: 4em;
-    list-style: none;
-    width: 90%;
+  > div {
+    position: relative;
+    padding-top: 4em;
+    height: auto;
+    overflow-y: scroll;
     display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    gap: auto;
-    justify-content: center;
-    justify-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    li.showcase {
-      height: 300px;
-      width: 450px;
-      max-width: 90%;
+  div.showcases-grid {
+    gap: 2em;
+    margin-top: 4em;
+    width: 90%;
+    height: 90vh;
+
+    div.showcase {
+      position: relative;
+      max-height: 400px;
+      max-width: 400px;
+      float: left;
       background: red;
+      margin: 1em;
+      video {
+        max-height: inherit;
+        max-width: inherit;
+        // height: inherit;
+      }
     }
   }
 }

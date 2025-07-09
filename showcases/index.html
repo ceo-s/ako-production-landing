@@ -7,8 +7,11 @@
     <link rel="stylesheet" lang="scss" href="/styles/style.scss" />
   </head>
   <body>
-    <div>
-      <section id="section-showcases-page" class="dark">
+    <section id="section-showcases-page" class="dark">
+      <button id="scroll-to-top" class="scroll-to-top">
+        <img src="/assets/icons/arrow-big-up.svg" alt="Go up button" />
+      </button>
+      <div class="pretty-scrollbar">
         <h1 class="header section-title">
           Check out our <span class="gradient-text">Masterpieces</span>
         </h1>
@@ -20,10 +23,12 @@
           <button class="more-button">✨ Back to main page</button>
         </a>
         <div>
-          <ul class="showcases-list"></ul>
+          <div class="grid showcases-grid"></div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </body>
   <script type="module" src="/scripts/fill_videos.js"></script>
+  <script type="module" src="/scripts/scroll_to_top.js"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 </html>
