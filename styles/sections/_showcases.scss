@@ -29,8 +29,9 @@
     }
 
     .showcase-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 2em;
       width: 100%;
       max-width: 1200px;
@@ -45,7 +46,35 @@
       justify-content: flex-end;
       position: relative;
       height: 200px;
+      width: 300px;
       box-shadow: 0 0.75em 1.5em #00000033;
+      cursor: pointer;
+
+      &:nth-of-type(1) {
+        .tag {
+          background: colors.$green-light;
+        }
+      }
+      &:nth-of-type(3) {
+        .tag {
+          background: #4caf50;
+        }
+      }
+      &:nth-of-type(4) {
+        .tag {
+          background: #ff9800;
+        }
+      }
+      &:nth-of-type(2) {
+        .tag {
+          background: #e91e63;
+        }
+      }
+      &:nth-of-type(5) {
+        .tag {
+          background: #e53935;
+        }
+      }
 
       .overlay {
         background: linear-gradient(to top, colors.$black, transparent 60%);
@@ -83,22 +112,6 @@
         font-weight: bold;
         text-transform: uppercase;
         color: colors.$white;
-
-        &.product {
-          background: colors.$green-light;
-        }
-        &.fashion {
-          background: #e91e63;
-        }
-        &.commercial {
-          background: #e53935;
-        }
-        &.corporate {
-          background: #4caf50;
-        }
-        &.event {
-          background: #ff9800;
-        }
       }
     }
 

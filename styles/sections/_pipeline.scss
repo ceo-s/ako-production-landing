@@ -24,7 +24,9 @@
       border-radius: 18px;
       box-shadow: 0 8px 32px 0 rgba(41, 163, 106, 0.1);
       padding: 36px 28px 32px 28px;
+      // padding: 1.5em 1em 1.3em 1em;
       width: 220px;
+      height: 220px;
       min-width: 180px;
       display: flex;
       flex-direction: column;
@@ -33,6 +35,9 @@
       position: relative;
       margin: 0 18px;
 
+      &:nth-of-type(odd) {
+        scale: 1.05;
+      }
       &:hover {
         box-shadow: 0 12px 36px 0 rgba(41, 163, 106, 0.18);
       }

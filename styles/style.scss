@@ -5,7 +5,7 @@
 @use "sections/pipeline";
 @use "sections/command";
 @use "sections/form";
-@use "sections/showcases_page";
+@use "sections/production";
 
 * {
   margin: 0;
@@ -23,6 +23,10 @@ body {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
   }
+}
+
+a {
+  color: colors.$white;
 }
 
 footer {
@@ -302,7 +306,7 @@ section.light {
   opacity: 0;
   box-shadow: 0 0 10px 10px colors.$green-light;
 
-  transition: opacity 100ms linear;
+  transition: opacity 350ms linear;
 
   > img {
     filter: invert(1);

@@ -1,0 +1,77 @@
+@use "../colors";
+
+#section-production-page {
+  justify-content: center;
+  align-items: center;
+
+  > div {
+    position: relative;
+    padding-top: 4em;
+    height: auto;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  div.production-grid {
+    gap: 2em;
+    margin-top: 4em;
+    width: 90%;
+    height: 90vh;
+
+    div.showcase {
+      position: relative;
+      max-height: 400px;
+      max-width: 400px;
+      float: left;
+      margin: 1em;
+
+      video {
+        max-height: inherit;
+        max-width: inherit;
+        transition: filter 300ms ease;
+        filter: brightness(70%) blur(2px);
+
+        &:hover {
+          filter: brightness(100%) blur(0);
+        }
+      }
+
+      h4 {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: fit-content;
+        width: fit-content;
+        font-size: x-large;
+        text-wrap: initial;
+      }
+
+      cursor: pointer;
+    }
+  }
+}
+
+#player-dialog {
+  &::backdrop {
+    background-color: red;
+  }
+  margin: auto;
+  width: 100%;
+
+  > div {
+    max-height: 80%;
+    max-width: 90%;
+    height: fit-content;
+    padding: 1em;
+
+    video {
+      max-height: inherit;
+      max-width: inherit;
+    }
+  }
+}

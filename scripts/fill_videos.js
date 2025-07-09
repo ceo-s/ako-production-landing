@@ -1,4 +1,4 @@
-import { registerAutoplay } from "./control_videos";
+import { registerAutoplay, registerPlayer } from "./control_videos";
 
 const grid = document.querySelector("div.grid");
 
@@ -13,14 +13,14 @@ function generateElement(id, name) {
   let el = document.createElement("div");
   el.classList.add("grid-item");
   el.classList.add("showcase");
-  el.innerHTML = `<video preload="metadata"> <source src="https://media.ako-production.com/${id}"></video><h4>${name}</h4>`;
+  el.innerHTML = `<video src="https://media.ako-production.com/${id}" preload="metadata"></video><h4>${name}</h4>`;
   return el;
 }
 
 async function fetchVideos() {
   const resp = await fetch("https://ako-production.com/api/videos");
   if (!resp.ok) {
-    console.log(await resp.text());
+    console.error(await resp.text());
     return [];
   }
   return resp.json();
@@ -32,6 +32,7 @@ async function fetchVideos() {
   for (const [id, name] of Object.entries(videos)) {
     let el = generateElement(id, name);
     registerAutoplay(el.children[0]);
+    registerPlayer(el);
     grid.appendChild(el);
   }
 })();

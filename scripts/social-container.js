@@ -5,10 +5,6 @@ const trigger = document.querySelector(
 );
 const scroller = document.querySelector("div.scroller");
 const hideMe = document.querySelector("#social-networks-container");
-// hideMe.style.top = "-35px";
-
-console.log(trigger);
-console.log(hideMe);
 
 function isInViewport(element) {
   const rect = element.getBoundingClientRect();

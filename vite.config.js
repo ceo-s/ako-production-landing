@@ -6,7 +6,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "index.html",
-        showcases: "showcases/index.html",
+        production: "production/index.html",
       },
     },
   },

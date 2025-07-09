@@ -1,6 +1,8 @@
 import debounce from "debounce";
 
-const scroller = document.querySelector("section#section-showcases-page > div");
+const scroller = document.querySelector(
+  "section#section-production-page > div"
+);
 const scrollBtn = document.getElementById("scroll-to-top");
 
 scroller.addEventListener(
@@ -11,8 +13,6 @@ scroller.addEventListener(
     } else {
       scrollBtn.classList.remove("show");
     }
-    console.log("balls");
-    console.log(scroller.scrollTop);
   }, 500)
 );
 
