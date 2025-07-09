@@ -314,8 +314,10 @@ section.light {
   border: none;
   opacity: 0;
   box-shadow: 0 0 10px 10px colors.$green-light;
+  z-index: 1;
 
   transition: opacity 350ms linear;
+  -webkit-tap-highlight-color: transparent;
 
   > img {
     filter: invert(1);

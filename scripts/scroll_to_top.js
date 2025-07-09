@@ -5,10 +5,13 @@ const scroller = document.querySelector(
 );
 const scrollBtn = document.getElementById("scroll-to-top");
 
-scroller.addEventListener(
+window.addEventListener(
   "scroll",
   debounce(() => {
-    if (scroller.scrollTop > 320) {
+    console.log("Bals");
+    console.log(window.scrollY);
+    if (window.scrollY > 320) {
+      console.log("Bals2");
       scrollBtn.classList.add("show");
     } else {
       scrollBtn.classList.remove("show");
@@ -17,7 +20,7 @@ scroller.addEventListener(
 );
 
 scrollBtn.addEventListener("click", () => {
-  scroller.scrollTo({
+  window.scrollTo({
     top: 0,
     behavior: "smooth",
   });
