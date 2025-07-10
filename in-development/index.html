@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page in Development</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(120deg, #0d0d0d 60%, #29a36a 100%);
+        color: #f9f9f9;
+        font-family: 'Libertinus Math', system-ui, sans-serif;
+        margin: 0;
+      }
+      .dev-container {
+        text-align: center;
+        padding: 2.5em 2em;
+        background: rgba(13, 13, 13, 0.92);
+        border-radius: 18px;
+        box-shadow: 0 8px 32px 0 rgba(41, 163, 106, 0.18);
+      }
+      .dev-container h1 {
+        font-size: 2.2em;
+        margin-bottom: 0.5em;
+        letter-spacing: 0.02em;
+        color: #29a36a;
+      }
+      .dev-container p {
+        font-size: 1.2em;
+        color: #2dcf8c;
+        margin-bottom: 1.5em;
+      }
+      .dev-emoji {
+        font-size: 3.5em;
+        margin-bottom: 0.3em;
+        display: block;
+      }
+      a {
+        color: #2dcf8c;
+        text-decoration: underline;
+      }
+      @media (max-width: 600px) {
+        .dev-container {
+          padding: 1.2em 0.5em;
+        }
+        .dev-container h1 {
+          font-size: 1.3em;
+        }
+        .dev-emoji {
+          font-size: 2.2em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dev-container">
+      <span class="dev-emoji">🚧</span>
+      <h1>Page is in Development</h1>
+      <p>Sorry, this page is not ready yet.<br />Please check back later!</p>
+      <a href="/" style="color:#fff;text-decoration:underline;">← Back to Home</a>
+    </div>
+  </body>
+</html>

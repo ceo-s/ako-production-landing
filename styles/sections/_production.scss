@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../colors";
 
 #section-production-page {
@@ -79,6 +80,12 @@
         opacity: 0.5;
       }
 
+      &:hover {
+        h4 {
+          opacity: 0;
+        }
+      }
+
       video {
         max-height: inherit;
         max-width: inherit;
@@ -94,14 +101,17 @@
       h4 {
         position: absolute;
         margin: auto;
-        top: 0;
-        bottom: 0;
+        bottom: 1em;
         left: 0;
         right: 0;
         height: fit-content;
         width: fit-content;
-        font-size: x-large;
+        font-size: xx-large;
+        font-weight: 900;
         text-wrap: initial;
+        text-align: center;
+        transition: opacity 0.3s ease;
+        color: color.scale(colors.$green-light, $lightness: 90%);
       }
 
       cursor: pointer;
@@ -232,17 +242,11 @@
         }
       }
 
-      button.stop-button {
-      }
-
       input.progress {
         // width: 80%;
         // height: 100%;
         accent-color: colors.$green-light;
         flex-grow: 1;
-      }
-
-      button.full-view-button {
       }
     }
   }

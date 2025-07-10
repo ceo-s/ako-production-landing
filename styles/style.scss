@@ -15,7 +15,7 @@
 body {
   background: colors.$black;
   color: colors.$white;
-
+  overflow: hidden;
   .scroller {
     height: 100vh;
     overflow-y: scroll;
@@ -23,6 +23,9 @@ body {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
   }
+
+  font-family: "Libertinus Math", system-ui;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {
