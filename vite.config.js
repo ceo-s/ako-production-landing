@@ -8,7 +8,7 @@ export default defineConfig({
         main: "index.html",
         production: "production/index.html",
         "in-development": "in-development/index.html",
-        404: "404/index.html",
+        "page-not-found": "page-not-found/index.html",
       },
     },
   },
