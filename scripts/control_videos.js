@@ -31,10 +31,10 @@ closeButton.addEventListener("click", (e) => {
 });
 
 function playVideo() {
+  progress.value = (video.currentTime / video.duration) * 100;
   video.play();
   playButton.style.display = "none";
   controls.style.display = "flex";
-  progress.value = 0;
   videoIsPlaying = true;
 }
 
@@ -49,8 +49,12 @@ export function registerPlayer(videoContainer) {
   videoContainer.addEventListener("click", () => {
     video.setAttribute("src", videoContainer.firstChild.getAttribute("src"));
     progress.value = 0;
-    pauseVideo();
-    player.showModal();
+    if (isMobile) {
+      requestFullScreen();
+    } else {
+      pauseVideo();
+      player.showModal();
+    }
   });
 }
 
@@ -127,6 +131,10 @@ progress.addEventListener("input", () => {
 });
 
 fullViewButton.addEventListener("click", () => {
+  requestFullScreen();
+});
+
+function requestFullScreen() {
   if (video.requestFullscreen) {
     video.requestFullscreen();
   } else if (video.webkitRequestFullscreen) {
@@ -136,4 +144,4 @@ fullViewButton.addEventListener("click", () => {
     // IE/Edge
     video.msRequestFullscreen();
   }
-});
+}
