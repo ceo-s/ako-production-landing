@@ -7,6 +7,15 @@ const progress = player.querySelector(".progress");
 const fullViewButton = player.querySelector(".full-view-button");
 const closeButton = player.querySelector(".close-dialog");
 
+const isMobile =
+  window.matchMedia("(pointer: coarse)").matches ||
+  /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  ) ||
+  window.innerWidth <= 700;
+
+let touchTimerMobile = null;
+
 player.addEventListener("click", (e) => {
   if (e.target.tagName === "DIALOG") {
     e.stopPropagation();
@@ -46,6 +55,14 @@ export function registerPlayer(videoContainer) {
 }
 
 export function registerAutoplay(video) {
+  if (isMobile) {
+    registerAutoplayMobile(video);
+  } else {
+    registerAutoplayDesktop(video);
+  }
+}
+
+function registerAutoplayDesktop(video) {
   video.onmouseover = () => {
     video.muted = true;
     video.play();
@@ -55,6 +72,23 @@ export function registerAutoplay(video) {
     video.pause();
     video.currentTime = 0;
   };
+}
+
+function registerAutoplayMobile(video) {
+  video.addEventListener("touchstart", (e) => {
+    touchTimerMobile = setTimeout(() => {
+      startPreview();
+    }, 500);
+  });
+
+  video.addEventListener("touchend", (e) => {
+    clearTimeout(touchTimerMobile);
+    stopPreview();
+  });
+
+  video.addEventListener("touchmove", (e) => {
+    clearTimeout(touchTimerMobile);
+  });
 }
 
 let videoIsPlaying = false;
