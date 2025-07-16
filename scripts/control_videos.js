@@ -49,7 +49,6 @@ let lastPreviewed = null;
 
 export function registerPlayer(videoContainer) {
   videoContainer.addEventListener("click", (e) => {
-    document.body.style.background = "red";
     video.setAttribute("src", videoContainer.children[1].dataset.fullVideo);
     progress.value = 0;
 
@@ -99,11 +98,9 @@ function registerAutoplayMobile(videoContainer) {
   const video = videoContainer.children[1];
 
   videoContainer.children[0].addEventListener("click", (e) => {
-    e.stopPropagation();
-    if (lastPreviewed === video) {
-      videoContainer.dispatchEvent(new Event("click"));
-      return;
-    }
+    if (lastPreviewed !== video) {
+      e.stopPropagation();
+    } else return;
     if (lastPreviewed) {
       lastPreviewed.pause();
       lastPreviewed.style.display = "none";
@@ -112,22 +109,6 @@ function registerAutoplayMobile(videoContainer) {
     video.play();
     lastPreviewed = video;
   });
-
-  // videoContainer.addEventListener("touchstart", (e) => {
-  //   touchTimerMobile = setTimeout(() => {
-  //     startPreview();
-  //     video.play();
-  //   }, 500);
-  // });
-
-  // videoContainer.addEventListener("touchend", (e) => {
-  //   clearTimeout(touchTimerMobile);
-  //   video.pause();
-  // });
-
-  // videoContainer.addEventListener("touchmove", (e) => {
-  //   clearTimeout(touchTimerMobile);
-  // });
 }
 
 let videoIsPlaying = false;
