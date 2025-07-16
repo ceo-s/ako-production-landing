@@ -1,5 +1,6 @@
 const player = document.getElementById("player-dialog");
 const video = player.querySelector("video");
+const mobileVideo = document.querySelector("video#mobileVideo");
 const playButton = player.querySelector(".play-button");
 const controls = player.querySelector(".controls");
 const stopButton = player.querySelector(".stop-button");
@@ -49,14 +50,16 @@ let lastPreviewed = null;
 
 export function registerPlayer(videoContainer) {
   videoContainer.addEventListener("click", (e) => {
-    document.body.style.background = "red";
-    video.setAttribute("src", videoContainer.children[1].dataset.fullVideo);
-    progress.value = 0;
-
     if (isMobile) {
-      player.showModal();
-      requestFullScreen();
+      mobileVideo.setAttribute(
+        "src",
+        videoContainer.children[1].dataset.fullVideo
+      );
+      requestFullScreen(mobileVideo);
+      mobileVideo.play();
     } else {
+      video.setAttribute("src", videoContainer.children[1].dataset.fullVideo);
+      progress.value = 0;
       pauseVideo();
       player.showModal();
     }
@@ -149,10 +152,10 @@ progress.addEventListener("input", () => {
 });
 
 fullViewButton.addEventListener("click", () => {
-  requestFullScreen();
+  requestFullScreen(video);
 });
 
-function requestFullScreen() {
+function requestFullScreen(video) {
   if (video.requestFullscreen) {
     video.requestFullscreen();
   } else if (video.webkitRequestFullscreen) {
