@@ -50,6 +50,7 @@ document.addEventListener("fullscreenchange", onFullScreenChange);
 document.addEventListener("webkitfullscreenchange", onFullScreenChange);
 document.addEventListener("mozfullscreenchange", onFullScreenChange);
 document.addEventListener("MSFullscreenChange", onFullScreenChange);
+mobileVideo.addEventListener("webkitendfullscreen", onFullScreenChange);
 
 function onFullScreenChange() {
   if (
@@ -58,7 +59,6 @@ function onFullScreenChange() {
     !document.mozFullScreenElement &&
     !document.msFullscreenElement
   ) {
-    console.log("Вышли из полноэкранного режима");
     mobileVideo.pause();
     mobileVideo.style.display = "none";
   }
