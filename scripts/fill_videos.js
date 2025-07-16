@@ -17,7 +17,7 @@ function generateElement(videoId, previewId, thumbnailId, name) {
 
   const baseUrl = "https://media.ako-production.com";
   el.innerHTML = `<img src="${baseUrl}/${thumbnailId}">
-  <video data-full-video="${baseUrl}/${videoId}" src="${baseUrl}/${previewId}" preload="none"></video>
+  <video data-full-video="${baseUrl}/${videoId}" src="${baseUrl}/${previewId}" preload="none" muted loop></video>
   <h4>${name}</h4>`;
   const thumbnail = el.children[0];
 

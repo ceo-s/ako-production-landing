@@ -14,8 +14,6 @@ const isMobile =
   ) ||
   window.innerWidth <= 700;
 
-let touchTimerMobile = null;
-
 player.addEventListener("click", (e) => {
   if (e.target.tagName === "DIALOG") {
     e.stopPropagation();
@@ -45,13 +43,14 @@ function pauseVideo() {
   videoIsPlaying = false;
 }
 
+let lastPreviewed = null;
+
 export function registerPlayer(videoContainer) {
-  videoContainer.addEventListener("click", () => {
-    console.log(
-      "Setting attribute " + videoContainer.children[1].dataset.fullVideo
-    );
+  videoContainer.addEventListener("click", (e) => {
+    console.log(e);
     video.setAttribute("src", videoContainer.children[1].dataset.fullVideo);
     progress.value = 0;
+
     if (isMobile) {
       requestFullScreen();
     } else {
@@ -62,9 +61,6 @@ export function registerPlayer(videoContainer) {
 }
 
 export function registerAutoplay(videoContainer) {
-  console.log("Registering autoplay!");
-  console.log(videoContainer);
-  console.log(videoContainer.children[1]);
   if (isMobile) {
     registerAutoplayMobile(videoContainer);
   } else {
@@ -76,34 +72,60 @@ function registerAutoplayDesktop(videoContainer) {
   const video = videoContainer.children[1];
 
   videoContainer.onmouseover = () => {
-    video.muted = true;
+    video.style.display = "inline-block";
     video.play();
+    lastPreviewed = video;
   };
 
   videoContainer.onmouseleave = () => {
+    video.style.display = "none";
     video.pause();
     video.currentTime = 0;
+    lastPreviewed = null;
   };
 }
+
+document.addEventListener("click", (e) => {
+  if (lastPreviewed) {
+    lastPreviewed.pause();
+    lastPreviewed.style.display = "none";
+    lastPreviewed = null;
+  }
+});
 
 function registerAutoplayMobile(videoContainer) {
   const video = videoContainer.children[1];
 
-  videoContainer.addEventListener("touchstart", (e) => {
-    touchTimerMobile = setTimeout(() => {
-      startPreview();
-      video.play();
-    }, 500);
+  videoContainer.children[0].addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (lastPreviewed === video) {
+      videoContainer.dispatchEvent(new Event("click"));
+      return;
+    }
+    if (lastPreviewed) {
+      lastPreviewed.pause();
+      lastPreviewed.style.display = "none";
+    }
+    video.style.display = "inline-block";
+    video.play();
+    lastPreviewed = video;
   });
 
-  videoContainer.addEventListener("touchend", (e) => {
-    clearTimeout(touchTimerMobile);
-    video.pause();
-  });
+  // videoContainer.addEventListener("touchstart", (e) => {
+  //   touchTimerMobile = setTimeout(() => {
+  //     startPreview();
+  //     video.play();
+  //   }, 500);
+  // });
 
-  videoContainer.addEventListener("touchmove", (e) => {
-    clearTimeout(touchTimerMobile);
-  });
+  // videoContainer.addEventListener("touchend", (e) => {
+  //   clearTimeout(touchTimerMobile);
+  //   video.pause();
+  // });
+
+  // videoContainer.addEventListener("touchmove", (e) => {
+  //   clearTimeout(touchTimerMobile);
+  // });
 }
 
 let videoIsPlaying = false;
