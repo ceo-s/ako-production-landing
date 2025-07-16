@@ -2,14 +2,6 @@ import { registerAutoplay, registerPlayer } from "./control_videos";
 
 const grid = document.querySelector("div.grid");
 
-let total = 0;
-let loaded = 0;
-
-let verticalVideosCount = 0;
-let horizontalVideosCount = 0;
-
-function insertPlaceholders() {}
-
 function generateElement(videoId, previewId, thumbnailId, name) {
   let el = document.createElement("div");
   el.classList.add("grid-item");
@@ -17,7 +9,7 @@ function generateElement(videoId, previewId, thumbnailId, name) {
 
   const baseUrl = "https://media.ako-production.com";
   el.innerHTML = `<img src="${baseUrl}/${thumbnailId}">
-  <video data-full-video="${baseUrl}/${videoId}" src="${baseUrl}/${previewId}" preload="none" muted loop></video>
+  <video data-full-video="${baseUrl}/${videoId}" src="${baseUrl}/${previewId}" preload="none" muted loop playsinline></video>
   <h4>${name}</h4>`;
   const thumbnail = el.children[0];
 
@@ -26,13 +18,9 @@ function generateElement(videoId, previewId, thumbnailId, name) {
 
     if (ratio > 1) {
       thumbnail.parentElement.classList.add("horizontal");
-      horizontalVideosCount++;
     } else {
       thumbnail.parentElement.classList.add("vertical");
-      verticalVideosCount++;
     }
-    loaded++;
-    if (total == loaded) insertPlaceholders();
   });
   return el;
 }
@@ -60,6 +48,5 @@ async function fetchVideos() {
     registerAutoplay(el);
     registerPlayer(el);
     grid.appendChild(el);
-    total++;
   }
 })();
