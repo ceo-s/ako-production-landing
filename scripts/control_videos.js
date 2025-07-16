@@ -46,11 +46,28 @@ function pauseVideo() {
   videoIsPlaying = false;
 }
 
-let lastPreviewed = null;
+document.addEventListener("fullscreenchange", onFullScreenChange);
+document.addEventListener("webkitfullscreenchange", onFullScreenChange);
+document.addEventListener("mozfullscreenchange", onFullScreenChange);
+document.addEventListener("MSFullscreenChange", onFullScreenChange);
+
+function onFullScreenChange() {
+  if (
+    !document.fullscreenElement &&
+    !document.webkitFullscreenElement &&
+    !document.mozFullScreenElement &&
+    !document.msFullscreenElement
+  ) {
+    console.log("Вышли из полноэкранного режима");
+    mobileVideo.pause();
+    mobileVideo.style.display = "none";
+  }
+}
 
 export function registerPlayer(videoContainer) {
   videoContainer.addEventListener("click", (e) => {
     if (isMobile) {
+      mobileVideo.style.display = "inline-block";
       mobileVideo.setAttribute(
         "src",
         videoContainer.children[1].dataset.fullVideo
@@ -74,6 +91,7 @@ export function registerAutoplay(videoContainer) {
   }
 }
 
+let lastPreviewed = null;
 function registerAutoplayDesktop(videoContainer) {
   const video = videoContainer.children[1];
 
