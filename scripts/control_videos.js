@@ -49,7 +49,7 @@ let lastPreviewed = null;
 
 export function registerPlayer(videoContainer) {
   videoContainer.addEventListener("click", (e) => {
-    console.log(e);
+    document.body.style.background = "red";
     video.setAttribute("src", videoContainer.children[1].dataset.fullVideo);
     progress.value = 0;
 
