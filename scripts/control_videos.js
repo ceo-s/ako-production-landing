@@ -47,7 +47,10 @@ function pauseVideo() {
 
 export function registerPlayer(videoContainer) {
   videoContainer.addEventListener("click", () => {
-    video.setAttribute("src", videoContainer.firstChild.getAttribute("src"));
+    console.log(
+      "Setting attribute " + videoContainer.children[1].dataset.fullVideo
+    );
+    video.setAttribute("src", videoContainer.children[1].dataset.fullVideo);
     progress.value = 0;
     if (isMobile) {
       requestFullScreen();
@@ -58,39 +61,47 @@ export function registerPlayer(videoContainer) {
   });
 }
 
-export function registerAutoplay(video) {
+export function registerAutoplay(videoContainer) {
+  console.log("Registering autoplay!");
+  console.log(videoContainer);
+  console.log(videoContainer.children[1]);
   if (isMobile) {
-    registerAutoplayMobile(video);
+    registerAutoplayMobile(videoContainer);
   } else {
-    registerAutoplayDesktop(video);
+    registerAutoplayDesktop(videoContainer);
   }
 }
 
-function registerAutoplayDesktop(video) {
-  video.onmouseover = () => {
+function registerAutoplayDesktop(videoContainer) {
+  const video = videoContainer.children[1];
+
+  videoContainer.onmouseover = () => {
     video.muted = true;
     video.play();
   };
 
-  video.onmouseleave = () => {
+  videoContainer.onmouseleave = () => {
     video.pause();
     video.currentTime = 0;
   };
 }
 
-function registerAutoplayMobile(video) {
-  video.addEventListener("touchstart", (e) => {
+function registerAutoplayMobile(videoContainer) {
+  const video = videoContainer.children[1];
+
+  videoContainer.addEventListener("touchstart", (e) => {
     touchTimerMobile = setTimeout(() => {
       startPreview();
+      video.play();
     }, 500);
   });
 
-  video.addEventListener("touchend", (e) => {
+  videoContainer.addEventListener("touchend", (e) => {
     clearTimeout(touchTimerMobile);
-    stopPreview();
+    video.pause();
   });
 
-  video.addEventListener("touchmove", (e) => {
+  videoContainer.addEventListener("touchmove", (e) => {
     clearTimeout(touchTimerMobile);
   });
 }

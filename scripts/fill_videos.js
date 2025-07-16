@@ -10,21 +10,25 @@ let horizontalVideosCount = 0;
 
 function insertPlaceholders() {}
 
-function generateElement(id, name) {
+function generateElement(videoId, previewId, thumbnailId, name) {
   let el = document.createElement("div");
   el.classList.add("grid-item");
   el.classList.add("showcase");
-  el.innerHTML = `<video src="https://media.ako-production.com/${id}" preload="metadata"></video><h4>${name}</h4>`;
-  const video = el.children[0];
 
-  video.addEventListener("loadedmetadata", function () {
-    var ratio = video.videoWidth / video.videoHeight;
+  const baseUrl = "https://media.ako-production.com";
+  el.innerHTML = `<img src="${baseUrl}/${thumbnailId}">
+  <video data-full-video="${baseUrl}/${videoId}" src="${baseUrl}/${previewId}" preload="none"></video>
+  <h4>${name}</h4>`;
+  const thumbnail = el.children[0];
+
+  thumbnail.addEventListener("load", function () {
+    var ratio = thumbnail.videoWidth / thumbnail.videoHeight;
 
     if (ratio > 1) {
-      video.parentElement.classList.add("horizontal");
+      thumbnail.parentElement.classList.add("horizontal");
       horizontalVideosCount++;
     } else {
-      video.parentElement.classList.add("vertical");
+      thumbnail.parentElement.classList.add("vertical");
       verticalVideosCount++;
     }
     loaded++;
@@ -46,9 +50,14 @@ async function fetchVideos() {
   const videos = await fetchVideos();
   videos;
 
-  for (const [id, name] of Object.entries(videos)) {
-    let el = generateElement(id, name);
-    registerAutoplay(el.children[0]);
+  for (const data of Object.values(videos)) {
+    let el = generateElement(
+      data.videoId,
+      data.previewId,
+      data.thumbnailId,
+      data.name
+    );
+    registerAutoplay(el);
     registerPlayer(el);
     grid.appendChild(el);
     total++;
