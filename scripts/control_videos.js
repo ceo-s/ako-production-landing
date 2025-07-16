@@ -54,6 +54,7 @@ export function registerPlayer(videoContainer) {
     progress.value = 0;
 
     if (isMobile) {
+      player.showModal();
       requestFullScreen();
     } else {
       pauseVideo();
