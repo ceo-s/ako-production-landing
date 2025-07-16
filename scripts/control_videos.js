@@ -14,17 +14,19 @@ const isMobile =
   ) ||
   window.innerWidth <= 700;
 
+player.addEventListener("close", (e) => {
+  pauseVideo();
+});
+
 player.addEventListener("click", (e) => {
   if (e.target.tagName === "DIALOG") {
     e.stopPropagation();
-    pauseVideo();
     player.close();
   }
 });
 
 closeButton.addEventListener("click", (e) => {
   e.stopPropagation();
-  pauseVideo();
   player.close();
 });
 
