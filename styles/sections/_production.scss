@@ -7,10 +7,13 @@
 
   overflow-x: hidden;
   scroll-snap-align: unset;
+  scroll-snap-type: none;
+  scroll-behavior: smooth;
   height: 95vh;
   position: relative;
   overflow-y: scroll;
   margin-top: 5vh;
+
   > div {
     height: fit-content;
   }
