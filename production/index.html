@@ -14,47 +14,49 @@
     />
   </head>
   <body>
-    <button id="scroll-to-top" class="scroll-to-top">
-      <img src="/assets/icons/arrow-big-up.svg" alt="Go up button" />
-    </button>
-    <dialog id="player-dialog">
-      <div>
-        <video src=""></video>
-        <button class="play-button">
-          <img src="/assets/icons/player-play.svg" />
-        </button>
-        <div class="controls">
-          <button class="stop-button">
-            <img src="/assets/icons/player-pause.svg" />
+    <div id="production-container">
+      <button id="scroll-to-top" class="scroll-to-top">
+        <img src="/assets/icons/arrow-big-up.svg" alt="Go up button" />
+      </button>
+      <dialog id="player-dialog">
+        <div>
+          <video src=""></video>
+          <button class="play-button">
+            <img src="/assets/icons/player-play.svg" />
           </button>
-          <input type="range" class="progress" value="0" step="0.01" />
-          <button class="full-view-button">
-            <img src="/assets/icons/border-corners.svg" />
-          </button>
+          <div class="controls">
+            <button class="stop-button">
+              <img src="/assets/icons/player-pause.svg" />
+            </button>
+            <input type="range" class="progress" value="0" step="0.01" />
+            <button class="full-view-button">
+              <img src="/assets/icons/border-corners.svg" />
+            </button>
+          </div>
+          <div class="close-dialog">CLOSE</div>
         </div>
-        <div class="close-dialog">CLOSE</div>
-      </div>
-    </dialog>
-    <video
-      id="mobileVideo"
-      src=""
-      style="display: none; width: 100%; height: auto; max-width: 100%"
-    ></video>
-    <section id="section-production-page" class="pretty-scrollbar">
-      <h1 class="header section-title">
-        Check out our <span class="gradient-text">Best Shots</span>
-      </h1>
-      <h4 class="header section-description">
-        Explore our complete collection of video works, showcasing creativity,
-        innovation, and storytelling across various projects.
-      </h4>
-      <a href="/#section-showcases">
-        <button class="more-button">✨ Back to main page</button>
-      </a>
-      <div>
-        <div class="grid production-grid"></div>
-      </div>
-    </section>
+      </dialog>
+      <video
+        id="mobileVideo"
+        src=""
+        style="display: none; width: 100%; height: auto; max-width: 100%"
+      ></video>
+      <section id="section-production-page" class="pretty-scrollbar">
+        <h1 class="header section-title">
+          Check out our <span class="gradient-text">Best Shots</span>
+        </h1>
+        <h4 class="header section-description">
+          Explore our complete collection of video works, showcasing creativity,
+          innovation, and storytelling across various projects.
+        </h4>
+        <a href="/#section-showcases">
+          <button class="more-button">✨ Back to main page</button>
+        </a>
+        <div>
+          <div class="grid production-grid"></div>
+        </div>
+      </section>
+    </div>
   </body>
   <script type="module" src="/scripts/fill_videos.js"></script>
   <script type="module" src="/scripts/scroll_to_top.js"></script>

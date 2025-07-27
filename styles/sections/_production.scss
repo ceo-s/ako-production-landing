@@ -1,6 +1,11 @@
 @use "sass:color";
 @use "../colors";
 
+#production-container {
+  overflow-y: scroll;
+  height: 100vh;
+}
+
 #section-production-page {
   justify-content: start;
   align-items: center;
@@ -9,14 +14,10 @@
   scroll-snap-align: unset;
   scroll-snap-type: none;
   scroll-behavior: smooth;
-  height: 95vh;
-  position: relative;
+  height: fit-content;
   overflow-y: scroll;
-  margin-top: 5vh;
+  padding-top: 5em;
 
-  > div {
-    height: fit-content;
-  }
   div.production-grid {
     position: relative;
     margin-top: 4em;
