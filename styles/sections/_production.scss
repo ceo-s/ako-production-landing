@@ -5,19 +5,21 @@
   justify-content: start;
   align-items: center;
 
+  overflow-y: scroll;
   overflow-x: hidden;
   scroll-snap-align: unset;
   scroll-snap-type: none;
   scroll-behavior: smooth;
   height: 100dvh;
-  // position: relative;
-  overflow-y: scroll;
-  // padding-top: 4em;
-  // margin-top: 5vh;
 
-  // > div {
-  //   height: fit-content;
-  // }
+  background: radial-gradient(
+    circle at 20% 0,
+    colors.$green-dark,
+    colors.$black 20%
+  ) !important;
+
+  // background: red;
+
   .section-title {
     margin-top: 1em;
   }
