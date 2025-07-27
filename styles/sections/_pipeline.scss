@@ -8,6 +8,7 @@
   align-items: center;
   text-align: center;
   color: colors.$white;
+  position: relative;
 
   .pipeline-steps {
     display: flex;
@@ -18,6 +19,7 @@
     flex-wrap: nowrap;
     position: relative;
     z-index: 1;
+    width: 100vw;
 
     .step {
       background: color.scale(colors.$black, $lightness: 3%);
@@ -116,7 +118,7 @@
     }
     .pipeline-steps {
       overflow: scroll;
-      width: 100%;
+      width: 100vw;
       align-items: center;
       justify-content: start;
       scrollbar-width: none;
