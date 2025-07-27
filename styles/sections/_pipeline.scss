@@ -34,7 +34,7 @@
       align-items: center;
       transition: box-shadow 0.6s;
       position: relative;
-      margin: 0 18px;
+      margin: 0 1em;
 
       &:hover {
         box-shadow: 0 12px 36px 0 rgba(41, 163, 106, 0.18);
@@ -122,8 +122,8 @@
       align-items: center;
       justify-content: start;
       scrollbar-width: none;
-      padding-left: 1em;
-      padding-right: 1em;
+      // padding-left: 1em;
+      // padding-right: 1em;
 
       &::before,
       &::after {
@@ -151,18 +151,20 @@
       overflow-x: scroll;
       flex-wrap: nowrap;
 
+      // padding-left: 5em;
+      // padding-right: 5em;
       .step {
         min-width: 200px;
         min-height: 250px;
         padding: 1em 0.5em 1em 0.5em;
-        margin: 0 0 18px 0;
+        margin: 0;
         &::after {
           scale: 0.85;
         }
       }
     }
     .fictive-block {
-      height: 120px;
+      height: 140px;
     }
   }
 }
